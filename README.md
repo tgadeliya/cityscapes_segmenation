@@ -12,3 +12,5 @@ __Description__
   Baseline = 4th_class_pixels / total_pixels =
 
 ## Usage
+
+## Improvements
