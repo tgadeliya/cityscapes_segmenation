@@ -12,6 +12,10 @@ __Description__
   Baseline = 4th_class_pixels / total_pixels =
 
 ## Usage
+  0. Create dataset file that stores information about train/val indices, batch size and location of the data folder.
+        ```python 
+        python3 make_dataset.py -data_folder cityscapes -name dataset_name -val_percent 0.2 -tr_batch_size 8
+        ```
   1. To create model run script src/make_model.py
         ```python 
         python3 make_model.py -Nchl 64 -name your_model_name --device cuda
