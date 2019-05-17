@@ -7,7 +7,8 @@ __Description__
 
 
 ## Usage
-  0. Create dataset file that stores information about train/val indices, batch size and location of the data folder.
+    Note:All commands use fixed folders to load data,datasets,models etc. For that reason you only need to put names, not pathes.
+  0. Create dataset file that stores information about train/val indices, batch size and  name of the data folder in data/ directory.
         ```python 
         python3 make_dataset.py -data_folder cityscapes -name dataset_name -val_percent 0.2 -tr_batch_size 8
         ```
@@ -24,10 +25,11 @@ __Description__
      Train model with specified hyperparameters or turn on hparameter search mode(randoms search, grid search).
   3. Evaluate model
       ```python
-       python3 eval.py -model  -dataset   
+       python3 eval.py -model your_model_name  -dataset dataset_name   
        ```
          
-## Models directory      
+## Models directory   
+
 
 ## Simplest baseline
  [](images/histogram)
