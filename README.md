@@ -1,7 +1,6 @@
-__Description__
-    
-# Image segmentation 
-  Implementation of UNet for image segmenatation on cityscape dataset.
+__Project Description__
+  Implementation of UNet for image segmenatation on cityscape dataset.\n
+  Link:https://www.cityscapes-dataset.com/
 
 ## Dataset
 
