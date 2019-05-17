@@ -1,7 +1,6 @@
-__Description__
-    
-# Image segmentation 
-  Implementation of UNet for image segmenatation on cityscape dataset.
+__Project Description__
+  Implementation of UNet for image segmenatation on cityscape dataset.\n
+  Link:https://www.cityscapes-dataset.com/
 
 ## Dataset
 
@@ -32,7 +31,7 @@ __Description__
 
 
 ## Simplest baseline
- [](images/histogram)
+ ("images/histogram.png")
  pictures of classes
  Because I am using accuracy metric, it is easy to present the simplest baseline based on constant output. As we can see on histogram below, class 4 the most
   Baseline = 4th_class_pixels / total_pixels =
