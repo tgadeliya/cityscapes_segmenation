@@ -1,13 +1,13 @@
 import argparse
-import os
+from os import mkdir
 
 import datetime
 import json
 
 import torch
-import model.UNet as UNet
+import model.UNet as Net
 
-PATH = "../models/"
+
 
 parser = argparse.ArgumentParser(description='Make UNet model with fixed structure and specified number of channels in the convolution layers.\
     Create folder ../models/model_name  model parameters, meta information and inside and meta info')
@@ -28,17 +28,21 @@ parser.add_argument('--device',
 
 args = parser.parse_args()
 
+PATH = "../models/"
 
 path_to_model = PATH+args.name
-os.mkdir(path_to_model)
+mkdir(path_to_model)
 
 
-model = UNet(args.Nchl, dev_type = args.device)
-torch.save(model.state_dict(), path_to_model+"state_dict/init.pth")
+# Save model
+path_to_param = path_to_model+"/state_dict"
+mkdir(path_to_param)
+model = Net.UNet(args.Nchl, dev_type = args.device)
+torch.save(model.state_dict(), path_to_param+"/init.pth")
 
 
 # Create meta json file with basic info
-meta = os.open(path_to_model,"a+")
+meta = open(path_to_model+"/meta.json","a+")
 meta_dict = { "date" : datetime.datetime.now().strftime("%Y-%m-%d"),
               "time": datetime.datetime.now().strftime("%H:%M:%S"),
               "device" : args.device,

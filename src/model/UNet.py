@@ -1,7 +1,7 @@
-
 import torch.nn as nn
+import torch
 
-def make_block(in_channels, out_channels):
+def make_block(in_channels, out_channels, dev_type):
     block = nn.Sequential(nn.ReplicationPad2d(1),
                               nn.Conv2d(in_channels, out_channels, 3),
                               nn.ReLU(),
@@ -11,23 +11,23 @@ def make_block(in_channels, out_channels):
                               nn.ReLU(),
                               nn.BatchNorm2d(out_channels)
                              )
-    if (device.type == "cuda"):
+    if (dev_type == "cuda"):
         block.type(torch.cuda.FloatTensor)
     return block
 
 class UNet(nn.Module):
-    def __init__(self, basic_chl,num_classes = 30,image_channels = 3):
+    def __init__(self, basic_chl, dev_type = "cuda", num_classes = 30, image_channels = 3):
         super(UNet, self).__init__()
         
         #Calculate channels based on basic channel
         BL1_chl, BL2_chl, BL3_chl, BL4_chl, BL5_chl= [basic_chl * i for i in [1,2,4,8,16]]
         
         #Encoder blocks
-        self.ENC_BL1 = make_block(image_channels,BL1_chl)
-        self.ENC_BL2 = make_block(BL1_chl,BL2_chl)
-        self.ENC_BL3 = make_block(BL2_chl,BL3_chl)
-        self.ENC_BL4 = make_block(BL3_chl,BL4_chl)
-        self.ENC_BL5 = make_block(BL4_chl,BL5_chl)
+        self.ENC_BL1 = make_block(image_channels,BL1_chl, dev_type)
+        self.ENC_BL2 = make_block(BL1_chl, BL2_chl, dev_type)
+        self.ENC_BL3 = make_block(BL2_chl, BL3_chl, dev_type)
+        self.ENC_BL4 = make_block(BL3_chl, BL4_chl, dev_type)
+        self.ENC_BL5 = make_block(BL4_chl, BL5_chl, dev_type)
         
         #MaxPool for downsampling
         self.MaxPool = nn.MaxPool2d(2,2)
@@ -39,10 +39,10 @@ class UNet(nn.Module):
         self.UpConv4 = nn.ConvTranspose2d(BL2_chl, BL1_chl, 2, stride = 2)
         
         #Decoder blocks
-        self.DEC_BL1 = make_block(BL5_chl,BL4_chl)
-        self.DEC_BL2 = make_block(BL4_chl,BL3_chl)
-        self.DEC_BL3 = make_block(BL3_chl,BL2_chl)
-        self.DEC_BL4 = make_block(BL2_chl,BL1_chl)
+        self.DEC_BL1 = make_block(BL5_chl, BL4_chl, dev_type)
+        self.DEC_BL2 = make_block(BL4_chl, BL3_chl, dev_type)
+        self.DEC_BL3 = make_block(BL3_chl, BL2_chl, dev_type)
+        self.DEC_BL4 = make_block(BL2_chl, BL1_chl, dev_type)
         
         # Last convolution
         self.Final_CONV = nn.Conv2d(basic_chl, num_classes, 1)
@@ -87,4 +87,3 @@ class UNet(nn.Module):
         segmenatation_map = self.Final_CONV.forward(DEC_4_out)
     
         return segmenatation_map
-    2e

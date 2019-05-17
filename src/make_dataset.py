@@ -3,25 +3,25 @@ import numpy as np
 import os 
 import json
 
-parser = ArgumentParser()
+parser = ArgumentParser(description= "Command creates JSON file with information needed for training and evaluation of the model.")
 
 parser.add_argument("data_folder",
                     type=str,
                     default="cityscapes",
-                    help = "Name of the folder with images in data/"
+                    help = "Name of the folder with images in data/ directory."
                     )
 
 parser.add_argument("name",
                     type=str,
                     default="Cityscapes",
-                    help = "Name of JSON file with created dataset in datasets/"
+                    help = "Name of JSON file that will be created in datasets/ directory."
                     )
 
 
 parser.add_argument("val_percent",
                     type=float,
                     default = 0.2,
-                    help = "Fraction of images used to calculate validation score."
+                    help = "Fraction of images used to calculate validation score. Scale [0,1]."
                     )
 
 parser.add_argument("tr_batch_size",
@@ -51,5 +51,5 @@ dict_info = {
 }
 
 
-dataset = open("../datasets/{}.json".format(args.name), "a+")
-dataset.write(json.dumps(dict_info))
+dataset = open("../datasets/"+args.name, "a+")
+dataset.write(json.dumps(dict_info, indent=4))
