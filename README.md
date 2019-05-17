@@ -6,11 +6,6 @@ __Description__
 ## Dataset
 
 
-
-## Simplest baseline
-  Because I am using accuracy metric, it is easy to present the simplest baseline based on constant output. As we can see on histogram below, class 4 the most
-  Baseline = 4th_class_pixels / total_pixels =
-
 ## Usage
   0. Create dataset file that stores information about train/val indices, batch size and location of the data folder.
         ```python 
@@ -27,7 +22,17 @@ __Description__
        python3 train.py -name your_model_name -dataset path_to_data -hp mode
        ```
      Train model with specified hyperparameters or turn on hparameter search mode(randoms search, grid search).
+  3. Evaluate model
+      ```python
+       python3 eval.py -model  -dataset   
+       ```
          
-## Models directory   
+## Models directory      
+
+## Simplest baseline
+ [](images/histogram)
+ pictures of classes
+ Because I am using accuracy metric, it is easy to present the simplest baseline based on constant output. As we can see on histogram below, class 4 the most
+  Baseline = 4th_class_pixels / total_pixels =
+
 ## Improvements
-   
