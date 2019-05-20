@@ -1,6 +1,6 @@
 __Project Description__
-  Implementation of UNet for image segmenatation on cityscape dataset.
-    Link:https://www.cityscapes-dataset.com/
+  Implementation of UNet for image segmenatation on cityscape dataset.  
+  Link:https://www.cityscapes-dataset.com/
 ## Usage
   Note:All commands use fixed folders to load data,datasets,models etc. For that reason you only need to put names, not pathes.  
   
@@ -28,8 +28,7 @@ __Project Description__
 
 
 ## Simplest baseline
- ("images/histogram.png")
- pictures of classes
+ ![histogram of pixel frequency](images/histogram.png)  
  I am using accuracy metric, so it is easy to present the simplest baseline based on constant output. As we can see on   histogram above, class 4 the most frequent, so  
    Baseline = 31%
 
