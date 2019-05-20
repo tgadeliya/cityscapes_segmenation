@@ -16,7 +16,7 @@
      See Models directory for more information.
   2. Start training created model:
        ```python
-       python3 train.py -name your_model_name -dataset path_to_data -hp mode
+       python3 train.py -model model_name -dataset path_to_data -epochs num_ep -optim opt 
        ```
      Train model with specified hyperparameters or turn on hparameter search mode(randoms search, grid search).
   3. Evaluate model
