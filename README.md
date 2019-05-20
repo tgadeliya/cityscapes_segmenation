@@ -10,7 +10,7 @@ __Project Description__
         ```
   1. To create model run script src/make_model.py
         ```python 
-        python3 make_model.py -Nchl 64 -name your_model_name --device cuda
+        python3 make_model.py -Nchl 64 -name your_model_name -device cuda
         ```
      This step will create directory in models/your_model_name with parameters and META-info inside.
      See Models directory for more information.
