@@ -22,11 +22,7 @@ __Project Description__
   3. Evaluate model
       ```python
        python3 eval.py -model your_model_name  -dataset dataset_name   
-       ```
-         
-## Models directory   
-
-
+       ```         
 ## Simplest baseline
  ![histogram of pixel frequency](images/histogram.png)  
  I am using accuracy metric, so it is easy to present the simplest baseline based on constant output. As we can see on   histogram above, class 4 the most frequent, so  
