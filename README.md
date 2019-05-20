@@ -1,10 +1,6 @@
 __Project Description__
-  Implementation of UNet for image segmenatation on cityscape dataset.\n
-  Link:https://www.cityscapes-dataset.com/
-
-## Dataset
-
-
+  Implementation of UNet for image segmenatation on cityscape dataset.
+    Link:https://www.cityscapes-dataset.com/
 ## Usage
     Note:All commands use fixed folders to load data,datasets,models etc. For that reason you only need to put names, not pathes.
   0. Create dataset file that stores information about train/val indices, batch size and  name of the data folder in data/ directory.
@@ -33,7 +29,8 @@ __Project Description__
 ## Simplest baseline
  ("images/histogram.png")
  pictures of classes
- Because I am using accuracy metric, it is easy to present the simplest baseline based on constant output. As we can see on histogram below, class 4 the most
-  Baseline = 4th_class_pixels / total_pixels =
+ Because I am using accuracy metric, it is easy to present the simplest baseline based on constant output. As we can see on   histogram above, class 4 the most frequent, so 
+   Baseline = 31%
 
-## Improvements
+## Training strategy
+ Because there is heavy class unbalance it is good to start with training net to classify the most frequent classes and after that use _weights_ and _ignore_index_  parameters in loss function (CrossEntropyLoss()) to give a possibility for the net to learn scarse classes(signs, people, etc).
