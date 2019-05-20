@@ -2,8 +2,9 @@ __Project Description__
   Implementation of UNet for image segmenatation on cityscape dataset.
     Link:https://www.cityscapes-dataset.com/
 ## Usage
-    Note:All commands use fixed folders to load data,datasets,models etc. For that reason you only need to put names, not pathes.
-  0. Create dataset file that stores information about train/val indices, batch size and  name of the data folder in data/ directory.
+  Note:All commands use fixed folders to load data,datasets,models etc. For that reason you only need to put names, not pathes.  
+  
+  0. Create dataset file that stores information about train/val indices, batch size and  name of the data folder in data/   directory.
         ```python 
         python3 make_dataset.py -data_folder cityscapes -name dataset_name -val_percent 0.2 -tr_batch_size 8
         ```
@@ -29,7 +30,7 @@ __Project Description__
 ## Simplest baseline
  ("images/histogram.png")
  pictures of classes
- Because I am using accuracy metric, it is easy to present the simplest baseline based on constant output. As we can see on   histogram above, class 4 the most frequent, so 
+ I am using accuracy metric, so it is easy to present the simplest baseline based on constant output. As we can see on   histogram above, class 4 the most frequent, so  
    Baseline = 31%
 
 ## Training strategy
